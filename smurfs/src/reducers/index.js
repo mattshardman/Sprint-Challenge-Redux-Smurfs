@@ -32,6 +32,6 @@ export default (state = initialState, action) => {
         smurfs: action.payload.data
       };
     default:
-      return initialState;
+      return state;
   }
 };
