@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { fetchSmurfs } from '../actions';
+import SmurfCard from './SmurfCard';
 
 const Container = styled.div`
     min-height: 400px;
@@ -12,18 +13,23 @@ const Container = styled.div`
     flex-wrap: wrap;
 `;
 
-function Smurfs({ fetchSmurfs }) {
+function Smurfs({ fetchSmurfs, fetchingSmurfs, smurfs }) {
+    console.log(smurfs)
     useEffect(() => {
         fetchSmurfs();
     },[]);
 
+    if (fetchingSmurfs) {
+        return <div>Loading</div>
+    }
+
     return(
         <Container>
-            hi
+            { smurfs.map((smurf) => <SmurfCard {...smurf} />)}
         </Container>
     );
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = ({ fetchingSmurfs, smurfs }) => ({ fetchingSmurfs, smurfs });
 
 export default connect(mapStateToProps, { fetchSmurfs })(Smurfs);

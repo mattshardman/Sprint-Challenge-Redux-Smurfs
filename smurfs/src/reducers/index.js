@@ -1,4 +1,4 @@
-import types from '../constants';
+import types from "../constants";
 
 const initialState = {
   smurfs: [],
@@ -6,15 +6,17 @@ const initialState = {
   addingSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
-  error: null,
+  error: null
 };
 
 export default (state = initialState, action) => {
-  console.log(action)
-  switch(action.type) {
+  console.log(state)
+  switch (action.type) {
     case types.FETCHING_SMURFS:
-      return state;
+      return { ...state, fetchingSmurfs: true };
+    case types.SMURFS:
+      return { ...state, fetchingSmurfs: false, smurfs: action.payload.data };
     default:
-      return state;
+      return initialState;
   }
-}
+};
