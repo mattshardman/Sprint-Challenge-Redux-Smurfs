@@ -21,7 +21,7 @@ const Container = styled.div`
 const Wrapper = styled.section`
   min-height: 400px;
   max-width: 90%;
-  width: 1200px;
+  width: 1155px;
   display: flex;
   flex-wrap: wrap;
 `;
