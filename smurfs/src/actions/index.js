@@ -20,26 +20,29 @@ import types from '../constants';
 export const fetchSmurfs = () => dispatch => {
   dispatch(fetchingSmurfs);
   axios.get('/smurfs')
-    .then(result => dispatch(smurfs(result.data)));
+    .then(result => dispatch(smurfs(result.data)))
+    .catch(() => dispatch(error));
 };
 
 export const addSmurfs = payload => dispatch => {
   dispatch(addingSmurfs);
   axios.post('/smurfs', payload)
-    .then(result => dispatch(smurfs(result.data)));
+    .then(result => dispatch(smurfs(result.data)))
+    .catch(() => dispatch(error));
 };
 
 export const updateSmurfs = payload => dispatch => {
-  console.log(payload)
   dispatch(updatingSmurfs);
   axios.put(`smurfs/${payload.id}`, payload)
-    .then(result => dispatch(smurfs(result.data)));
+    .then(result => dispatch(smurfs(result.data)))
+    .catch(() => dispatch(error));
 };
 
 export const deleteSmurfs = id => dispatch => {
   dispatch(deletingSmurfs);
   axios.delete(`smurfs/${id}`)
-    .then(result => dispatch(smurfs(result.data)));
+    .then(result => dispatch(smurfs(result.data)))
+    .catch(() => dispatch(error));
 }
 
 const fetchingSmurfs = {
@@ -56,6 +59,10 @@ const deletingSmurfs = {
 
 const updatingSmurfs = {
   type: types.UPDATING_SMURFS
+}
+
+const error = {
+  type: types.ERROR
 }
 
 const smurfs = data => ({

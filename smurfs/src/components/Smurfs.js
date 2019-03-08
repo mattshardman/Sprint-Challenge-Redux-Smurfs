@@ -19,6 +19,10 @@ function Smurfs(props) {
         props.fetchSmurfs();
     },[]);
 
+    if (props.error) {
+        return <div>Oh no an error done occur.</div>
+    }
+
     if (props.fetchingSmurfs) {
         return <div>Loading</div>
     }
@@ -35,6 +39,6 @@ function Smurfs(props) {
     );
 }
 
-const mapStateToProps = ({ fetchingSmurfs, smurfs, deletingSmurfs }) => ({ fetchingSmurfs, smurfs, deletingSmurfs });
+const mapStateToProps = ({ fetchingSmurfs, smurfs, deletingSmurfs, error }) => ({ fetchingSmurfs, smurfs, deletingSmurfs, error });
 
 export default connect(mapStateToProps, actions)(Smurfs);
