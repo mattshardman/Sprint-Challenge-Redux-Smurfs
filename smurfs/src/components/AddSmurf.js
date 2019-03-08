@@ -66,7 +66,7 @@ function AddSmurf({ addSmurfs, addingSmurf }) {
           />
           <TextField
             type="text"
-            label="Height"
+            label="Smurf Image"
             value={image}
             onChange={e => setImage(e.target.value)}
           />
