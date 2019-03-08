@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { deleteSmurfs } from '../actions';
 
 const Smurf = styled.div`
     height: 400px;
@@ -11,12 +12,14 @@ const Smurf = styled.div`
     background: red;
 `;
 
-function SmurfCard({ age, name, height}) {
+function SmurfCard({ id, age, name, height, deleteSmurfs }) {
+    console.log(id)
     return (
         <Smurf>
             <h1>{name}</h1>
             <p>{age}</p>
             <p>{height}</p>
+            <button onClick={() => deleteSmurfs(id)}>delete</button>
         </Smurf>    
     )
 }

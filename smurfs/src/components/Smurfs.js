@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { fetchSmurfs } from '../actions';
+import * as actions from '../actions';
 import SmurfCard from './SmurfCard';
 
 const Container = styled.div`
@@ -13,7 +13,7 @@ const Container = styled.div`
     flex-wrap: wrap;
 `;
 
-function Smurfs({ fetchSmurfs, fetchingSmurfs, smurfs }) {
+function Smurfs({ fetchSmurfs, deleteSmurfs, fetchingSmurfs, smurfs, deletingSmurfs }) {
     console.log(smurfs)
     useEffect(() => {
         fetchSmurfs();
@@ -25,11 +25,15 @@ function Smurfs({ fetchSmurfs, fetchingSmurfs, smurfs }) {
 
     return(
         <Container>
-            { smurfs.map((smurf) => <SmurfCard {...smurf} />)}
+            { smurfs.map((smurf) => <SmurfCard 
+                key={smurf.name} 
+                {...smurf} 
+                deleteSmurfs={deleteSmurfs} 
+            />)}
         </Container>
     );
 }
 
 const mapStateToProps = ({ fetchingSmurfs, smurfs }) => ({ fetchingSmurfs, smurfs });
 
-export default connect(mapStateToProps, { fetchSmurfs })(Smurfs);
+export default connect(mapStateToProps, actions)(Smurfs);
