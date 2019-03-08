@@ -105,7 +105,7 @@ function SmurfCard({
           >
             cancel
           </Button>
-          <Button type="submit" size="small" color="secondary">
+          <Button type="submit" size="small" color="secondary" onClick={submitUpdate}>
             update
           </Button>
         </CardActions>
