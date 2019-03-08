@@ -24,12 +24,6 @@ const Form = styled.form`
   justify-content: space-around;
 `;
 
-const Input = styled.input`
-  height: 40px;
-  width: 80%;
-  border: 1px #000 solid;
-`;
-
 function AddSmurf({ addSmurfs, addingSmurf }) {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
