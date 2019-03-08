@@ -13,5 +13,17 @@
    U - updateSmurf
    D - deleteSmurf
 */
+import axios from 'axios';
 
 import types from '../constants';
+
+export const fetchSmurfs = () => dispatch => {
+  dispatch(fetchingSmurfs);
+  axios.get('/smurfs').then(r => console.log(r))
+};
+
+const fetchingSmurfs = ({
+  type: types.FETCHING_SMURFS,
+});
+
+
