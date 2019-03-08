@@ -7,13 +7,16 @@ import { Paper, TextField, Button } from "@material-ui/core";
 import { addSmurfs } from "../actions";
 
 const Container = styled.div`
+  box-sizing: border-box;
   height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url("https://geekculture.co/wp-content/uploads/2017/04/smurfs-thelostvillage.jpg");
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 `;
 
 const Form = styled.form`
@@ -21,6 +24,7 @@ const Form = styled.form`
   padding: 20px 75px;
   height: 500px;
   width: 450px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
