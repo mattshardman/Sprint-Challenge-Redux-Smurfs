@@ -13,3 +13,5 @@
    U - updateSmurf
    D - deleteSmurf
 */
+
+import types from '../constants';

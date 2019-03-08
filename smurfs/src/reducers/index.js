@@ -1,3 +1,4 @@
+import types from '../constants';
 
 const initialState = {
   smurfs: [],
