@@ -2,14 +2,26 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Redirect } from "react-router-dom";
+import { Paper, TextField, Button } from "@material-ui/core";
 
 import { addSmurfs } from "../actions";
 
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eaeaea;
+`;
+
 const Form = styled.form`
+  box-sizing: border-box;
+  padding: 20px 50px;
   height: 400px;
   width: 400px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 `;
 
 const Input = styled.input`
@@ -33,16 +45,33 @@ function AddSmurf({ addSmurfs, addingSmurf }) {
   }
 
   return (
-    <Form onSubmit={submitHandler}>
-      <Input type="text" value={name} onChange={e => setName(e.target.value)} />
-      <Input type="text" value={age} onChange={e => setAge(e.target.value)} />
-      <Input
-        type="text"
-        value={height}
-        onChange={e => setHeight(e.target.value)}
-      />
-      <button type="submit">Submit</button>
-    </Form>
+    <Container>
+      <Paper>
+       
+        <Form onSubmit={submitHandler}>
+        <h3 style={{ margin: 0}}>Add a Smurf</h3>
+          <TextField
+            type="text"
+            label="Name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+          <TextField
+            type="text"
+            label="Age"
+            value={age}
+            onChange={e => setAge(e.target.value)}
+          />
+          <TextField
+            type="text"
+            label="Height"
+            value={height}
+            onChange={e => setHeight(e.target.value)}
+          />
+          <Button variant="contained" color="primary" type="submit">Submit</Button>
+        </Form>
+      </Paper>
+    </Container>
   );
 }
 

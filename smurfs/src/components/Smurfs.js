@@ -2,10 +2,20 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import * as actions from '../actions';
 import SmurfCard from './SmurfCard';
 
 const Container = styled.div`
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+const Wrapper = styled.section`
     min-height: 400px;
     max-width: 90%;
     width: 800px;
@@ -24,17 +34,19 @@ function Smurfs(props) {
     }
 
     if (props.fetchingSmurfs) {
-        return <div>Loading</div>
+        return <Container><CircularProgress size={50}/></Container>;
     }
 
     return(
         <Container>
-            { props.smurfs.map((smurf) => <SmurfCard 
-                key={smurf.name} 
-                {...smurf} 
-                updateSmurfs={props.updateSmurfs}
-                deleteSmurfs={props.deleteSmurfs} 
-            />)}
+            <Wrapper>
+                { props.smurfs.map((smurf) => <SmurfCard 
+                    key={smurf.name} 
+                    {...smurf} 
+                    updateSmurfs={props.updateSmurfs}
+                    deleteSmurfs={props.deleteSmurfs} 
+                />)}
+            </Wrapper>
         </Container>
     );
 }
