@@ -99,9 +99,6 @@ function SmurfCard({
       </CardContent>
       {updateSmurf ? (
         <CardActions>
-          <Button type="submit" size="small" color="secondary">
-            update
-          </Button>
           <Button
             type="submit"
             size="small"
@@ -109,6 +106,9 @@ function SmurfCard({
             onClick={() => setUpdateSmurf(false)}
           >
             cancel
+          </Button>
+          <Button type="submit" size="small" color="secondary">
+            update
           </Button>
         </CardActions>
       ) : (
