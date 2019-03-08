@@ -29,6 +29,13 @@ export const addSmurfs = payload => dispatch => {
     .then(result => dispatch(smurfs(result.data)));
 };
 
+export const updateSmurfs = payload => dispatch => {
+  console.log(payload)
+  dispatch(updatingSmurfs);
+  axios.put(`smurfs/${payload.id}`, payload)
+    .then(result => dispatch(smurfs(result.data)));
+};
+
 export const deleteSmurfs = id => dispatch => {
   dispatch(deletingSmurfs);
   axios.delete(`smurfs/${id}`)
@@ -39,12 +46,16 @@ const fetchingSmurfs = {
   type: types.FETCHING_SMURFS,
 };
 
+const addingSmurfs = {
+  type: types.ADDING_SMURFS
+}
+
 const deletingSmurfs = {
   type: types.DELETING_SMURFS,
 };
 
-const addingSmurfs = {
-  type: types.ADDING_SMURFS
+const updatingSmurfs = {
+  type: types.UPDATING_SMURFS
 }
 
 const smurfs = data => ({

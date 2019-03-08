@@ -15,6 +15,8 @@ export default (state = initialState, action) => {
       return { ...state, fetchingSmurfs: true };
     case types.ADDING_SMURFS:
       return { ...state, addingSmurf: true };
+    case types.UPDATING_SMURFS:
+      return { ...state, updatingSmurf: true };
     case types.DELETING_SMURFS:
       return { ...state, deletingSmurf: true };
     case types.SMURFS:
@@ -22,6 +24,7 @@ export default (state = initialState, action) => {
         ...state,
         fetchingSmurfs: false,
         addingSmurf: false,
+        updatingSmurf: false,
         deletingSmurf: false,
         smurfs: action.payload.data
       };

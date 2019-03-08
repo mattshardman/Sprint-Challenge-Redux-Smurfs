@@ -28,6 +28,7 @@ function Smurfs(props) {
             { props.smurfs.map((smurf) => <SmurfCard 
                 key={smurf.name} 
                 {...smurf} 
+                updateSmurfs={props.updateSmurfs}
                 deleteSmurfs={props.deleteSmurfs} 
             />)}
         </Container>

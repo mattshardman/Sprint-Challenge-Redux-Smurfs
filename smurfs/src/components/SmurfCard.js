@@ -18,7 +18,7 @@ const Input = styled.input`
   border: 1px #000 solid;
 `;
 
-function SmurfCard({ id, age, name, height, deleteSmurfs }) {
+function SmurfCard({ id, age, name, height, updateSmurfs, deleteSmurfs }) {
   const [updateSmurf, setUpdateSmurf] = useState(false);
   const [formName, setFormName] = useState("");
   const [formAge, setFormAge] = useState("");
@@ -26,7 +26,7 @@ function SmurfCard({ id, age, name, height, deleteSmurfs }) {
 
   const submitUpdate = e => {
     e.preventDefault();
-    console.log(name, age, height);
+    updateSmurfs({ id, name: formName, age: formAge, height: formHeight });
   };
 
   return (
