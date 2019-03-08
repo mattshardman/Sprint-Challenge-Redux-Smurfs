@@ -10,16 +10,18 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log(state);
   switch (action.type) {
     case types.FETCHING_SMURFS:
       return { ...state, fetchingSmurfs: true };
+    case types.ADDING_SMURFS:
+      return { ...state, addingSmurf: true };
     case types.DELETING_SMURFS:
       return { ...state, deletingSmurf: true };
     case types.SMURFS:
       return {
         ...state,
         fetchingSmurfs: false,
+        addingSmurf: false,
         deletingSmurf: false,
         smurfs: action.payload.data
       };

@@ -13,27 +13,27 @@ const Container = styled.div`
     flex-wrap: wrap;
 `;
 
-function Smurfs({ fetchSmurfs, deleteSmurfs, fetchingSmurfs, smurfs, deletingSmurfs }) {
-    console.log(smurfs)
+function Smurfs(props) {
+
     useEffect(() => {
-        fetchSmurfs();
+        props.fetchSmurfs();
     },[]);
 
-    if (fetchingSmurfs) {
+    if (props.fetchingSmurfs) {
         return <div>Loading</div>
     }
 
     return(
         <Container>
-            { smurfs.map((smurf) => <SmurfCard 
+            { props.smurfs.map((smurf) => <SmurfCard 
                 key={smurf.name} 
                 {...smurf} 
-                deleteSmurfs={deleteSmurfs} 
+                deleteSmurfs={props.deleteSmurfs} 
             />)}
         </Container>
     );
 }
 
-const mapStateToProps = ({ fetchingSmurfs, smurfs }) => ({ fetchingSmurfs, smurfs });
+const mapStateToProps = ({ fetchingSmurfs, smurfs, deletingSmurfs }) => ({ fetchingSmurfs, smurfs, deletingSmurfs });
 
 export default connect(mapStateToProps, actions)(Smurfs);
