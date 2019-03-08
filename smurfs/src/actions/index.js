@@ -19,11 +19,17 @@ import types from '../constants';
 
 export const fetchSmurfs = () => dispatch => {
   dispatch(fetchingSmurfs);
-  axios.get('/smurfs').then(r => console.log(r))
+  axios.get('/smurfs')
+    .then(result => dispatch(smurfs(result.data)));
 };
 
-const fetchingSmurfs = ({
+const fetchingSmurfs = {
   type: types.FETCHING_SMURFS,
-});
+};
+
+const smurfs = data => ({
+  type: types.SMURFS,
+  payload: { data }
+})
 
 
