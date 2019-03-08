@@ -11,14 +11,16 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #eaeaea;
+  background-image: url("https://geekculture.co/wp-content/uploads/2017/04/smurfs-thelostvillage.jpg");
+  background-size: cover;
+  background-position: center;
 `;
 
 const Form = styled.form`
   box-sizing: border-box;
-  padding: 20px 50px;
-  height: 400px;
-  width: 400px;
+  padding: 20px 75px;
+  height: 500px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -28,10 +30,11 @@ function AddSmurf({ addSmurfs, addingSmurf }) {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [height, setHeight] = useState("");
+  const [image, setImage] = useState("");
 
   const submitHandler = e => {
     e.preventDefault();
-    addSmurfs({ name, age, height });
+    addSmurfs({ name, age, height, image });
   };
 
   if (addingSmurf) {
@@ -41,9 +44,8 @@ function AddSmurf({ addSmurfs, addingSmurf }) {
   return (
     <Container>
       <Paper>
-       
         <Form onSubmit={submitHandler}>
-        <h3 style={{ margin: 0}}>Add a Smurf</h3>
+          <h3 style={{ margin: 0 }}>Add a Smurf</h3>
           <TextField
             type="text"
             label="Name"
@@ -62,7 +64,15 @@ function AddSmurf({ addSmurfs, addingSmurf }) {
             value={height}
             onChange={e => setHeight(e.target.value)}
           />
-          <Button variant="contained" color="primary" type="submit">Submit</Button>
+          <TextField
+            type="text"
+            label="Height"
+            value={image}
+            onChange={e => setImage(e.target.value)}
+          />
+          <Button variant="contained" color="primary" type="submit">
+            Submit
+          </Button>
         </Form>
       </Paper>
     </Container>

@@ -48,6 +48,7 @@ function SmurfCard({
   age,
   name,
   height,
+  image,
   updateSmurfs,
   deleteSmurfs,
   classes
@@ -66,7 +67,7 @@ function SmurfCard({
     <Card className={classes.card}>
       <CardMedia
         className={classes.media}
-        image="https://cdn.vox-cdn.com/thumbor/oIRY68qFM3SiUyNQWoYwt_c3BM4=/0x0:2560x1600/1200x800/filters:focal(1662x443:2070x851)/cdn.vox-cdn.com/uploads/chorus_image/image/54121337/smurfscover.0.jpg"
+        image={image}
         title="Smurf"
       />
       <CardContent className={classes.content}>
