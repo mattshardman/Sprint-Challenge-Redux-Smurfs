@@ -37,9 +37,7 @@ const Smurf = styled.div`
 
 const Form = styled.form`
   display: flex;
-
   flex-direction: column;
-  height: 150;
 `;
 
 function SmurfCard({
@@ -92,8 +90,8 @@ function SmurfCard({
             <Typography gutterBottom variant="h5" component="h2">
               {name}
             </Typography>
-            <Typography component="p">Age: {age}</Typography>
-            <Typography component="p">Height: {height}</Typography>
+            <Typography component="p"><strong>Age:</strong> {age}</Typography>
+            <Typography component="p"><strong>Height:</strong> {height}</Typography>
           </React.Fragment>
         )}
       </CardContent>
