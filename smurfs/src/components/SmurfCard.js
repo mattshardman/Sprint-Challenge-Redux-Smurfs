@@ -21,7 +21,7 @@ const styles = {
     height: 250
   },
   content: {
-    height: 130
+    height: 150
   }
 };
 
@@ -37,10 +37,9 @@ const Smurf = styled.div`
 
 const Form = styled.form`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+
   flex-direction: column;
-  height: 130;
+  height: 150;
 `;
 
 function SmurfCard({
@@ -65,11 +64,7 @@ function SmurfCard({
 
   return (
     <Card className={classes.card}>
-      <CardMedia
-        className={classes.media}
-        image={image}
-        title="Smurf"
-      />
+      <CardMedia className={classes.media} image={image} title="Smurf" />
       <CardContent className={classes.content}>
         {updateSmurf ? (
           <Form onSubmit={submitUpdate}>
@@ -91,38 +86,49 @@ function SmurfCard({
               value={formHeight}
               onChange={e => setFormHeight(e.target.value)}
             />
-            <Button type="submit" size="small" color="primary">
-              update
-            </Button>
           </Form>
         ) : (
           <React.Fragment>
             <Typography gutterBottom variant="h5" component="h2">
               {name}
             </Typography>
-            <Typography component="p">
-              Age: {age} 
-            </Typography>
-            <Typography component="p">
-             Height: {height}
-            </Typography>
+            <Typography component="p">Age: {age}</Typography>
+            <Typography component="p">Height: {height}</Typography>
           </React.Fragment>
         )}
       </CardContent>
-      { !updateSmurf && 
-      <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => setUpdateSmurf(true)}
-        >
-          update
-        </Button>
-        <Button size="small" color="secondary" onClick={() => deleteSmurfs(id)}>
-          delete
-        </Button>
-      </CardActions>
-      }
+      {updateSmurf ? (
+        <CardActions>
+          <Button type="submit" size="small" color="secondary">
+            update
+          </Button>
+          <Button
+            type="submit"
+            size="small"
+            color="primary"
+            onClick={() => setUpdateSmurf(false)}
+          >
+            cancel
+          </Button>
+        </CardActions>
+      ) : (
+        <CardActions>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => setUpdateSmurf(true)}
+          >
+            update
+          </Button>
+          <Button
+            size="small"
+            color="secondary"
+            onClick={() => deleteSmurfs(id)}
+          >
+            delete
+          </Button>
+        </CardActions>
+      )}
     </Card>
   );
 }
